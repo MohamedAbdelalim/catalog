@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+{%include "header.html"%}
+{% block content %}
+
+    <div class="home_container">
+      <div class="container-fluid">
+         <div class="row">
+           <div class="col-md-4 col-sm-6 col-xs-12">
+    <h1 class="category_items_headers">{{ category_name }}</h1>
+    </br>
+    {% for i in items %}
+    <h3>
+    <a class="categories" href = "{{url_for('showItem', category_name = category_name,item_name=i.name)}}"> <p>{{i.name}}</p></a>
+    </h3>
+    {% endfor %}
+  </div>
+  </div>
+  </div>
+  </div>
+
+{% endblock %}

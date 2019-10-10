@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+{%include "header.html"%}
+{% block content %}
+
+    <div class="container-fluid">
+
+    <form action="{{url_for('editItem',item_name=item.name)}}" method = "POST">
+      <label for="name">Name</label>
+      <input type="text" name="name" value = "{{item.name}}" required>
+
+      <label for="description">Description</label>
+      <textarea rows="5"  name="description" required>{{item.description}}</textarea>
+
+      <label for="sel1">Category</label>
+      <select name="category">
+          {%for c in categories%}
+          {% if c.name == category_name %}
+        <option selected>{{c.name}}</option>
+          {%else%}
+          <option>{{c.name}}</option>
+          {%endif%}
+          {%endfor%}
+      </select>
+
+      <button type="submit">Submit</button>
+
+</form>
+</div>
+
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+{%include "header.html"%}
+{% block content %}
+
+<div class="home_container">
+    <div class="container-fluid">
+       <div class="row">
+         <div class="col-md-4 col-sm-6 col-xs-12">
+    <h1 class="home_headers">Vehicles</h1>
+
+    {% for category in categories %}
+
+    <a class="categories" href = "{{url_for('showCategory', category_name = category.name)}}">
+    <h3><p>{{category.name}}</p></h3>
+    </a>
+
+    {% endfor %}
+    </div>
+    <div class="col-md-8 col-sm-6 col-xs-12">
+    {%if 'username' in session %}
+    <a href="{{url_for('newItem')}}">
+        <button type="button" >Add Item</button>
+    </a>
+    {%endif%}
+    <h1 class="home_headers">Latest Items</h1>
+    {% for i in lItems %}
+    <a class="items" href = "{{url_for('showItem',category_name=i.Category.name,item_name=i.Item.name)}}">
+
+    <p>Item Name: {{i.Item.name}}</p>
+    <p>Category:{{i.Category.name}}</p>
+    </a>
+    {% endfor %}
+  </div>
+  </div>
+
+
+  </div>
+</div>
+
+{% endblock %}

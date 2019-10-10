@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+{%include "header.html"%}
+{% block content %}
+
+  <div class="container-fluid">
+
+    <h1>{{ item.name }}</h1>
+    </br>
+
+    <h3>
+    <p>{{item.description}}</p>
+    </h3>
+    {%if 'username' in session %}
+        <a href="{{url_for('editItem',item_name=item.name)}}">
+            <button type="button">Edit</button>
+        </a>
+        <a href="{{url_for('deleteItem',item_name=item.name)}}">
+            <button type="button">Delete</button>
+        </a>
+    {%endif%}
+  </div>
+
+{% endblock %}
